@@ -11,7 +11,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws UnknownHostException, IOException {
          System.out.println("Il client e' partito");
-        Socket mySocket = new Socket("localhost", 5672);
+        Socket mySocket = new Socket("localhost", 5670);
         System.out.println("il client si e' collegato");
         
         BufferedReader in = new BufferedReader(new InputStreamReader(mySocket.getInputStream()));
@@ -20,7 +20,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         String stringaRicevuta;
 
-        int scelta;
+       String scelta;
 
         do{
             System.out.println("1) Trasformare stringa in maiuscolo");
@@ -31,17 +31,15 @@ public class Main {
             System.out.println("---------------------------------");
             System.out.println("inserire il numero dell'operazione che si vuol compiere");
 
-            scelta = sc.nextInt();
-            out.writeBytes(scelta + "\n");
-
-            
+            scelta = sc.nextLine();
             System.out.println("inserire riga :");
             String input = sc.nextLine();
+            out.writeBytes(scelta + "\n");
             out.writeBytes(input + "\n");
             stringaRicevuta = in.readLine();
-            System.out.println(stringaRicevuta);
+            System.out.println("Stringa ricevuta: " + stringaRicevuta);
 
-        }while(scelta != 5);
+        }while(!scelta.equals("5"));
 
         mySocket.close();
     }
