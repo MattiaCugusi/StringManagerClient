@@ -35,7 +35,7 @@ public class Main {
             out.writeBytes(scelta + "\n");
 
             
-            System.out.println("inserire riga:");
+            System.out.println("inserire riga :");
             String input = sc.nextLine();
             out.writeBytes(input + "\n");
             stringaRicevuta = in.readLine();
